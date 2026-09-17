@@ -1,8 +1,9 @@
 package service
 
 import (
+	crand "crypto/rand"
 	"errors"
-	"math/rand"
+	"math/big"
 	"strconv"
 	"strings"
 	"time"
@@ -378,7 +379,12 @@ func (us *UserService) RegisterByOauth(oauthUser *model.OauthUser, op string) (e
 // GenerateUsernameByOauth 生成用户名
 func (us *UserService) GenerateUsernameByOauth(name string) string {
 	for us.IsUsernameExists(name) {
-		name += strconv.Itoa(rand.Intn(10)) // Append a random digit (0-9)
+		n, err := crand.Int(crand.Reader, big.NewInt(10))
+		if err != nil {
+			name += "0"
+		} else {
+			name += strconv.Itoa(int(n.Int64())) // Append a random digit (0-9)
+		}
 	}
 	return name
 }

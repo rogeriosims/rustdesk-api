@@ -59,10 +59,11 @@
     <link rel="stylesheet" href="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/6.0.0/css/all.min.css">
     <script>
         var lang = navigator.language || navigator.userLanguage || 'zh-CN';
-        var title = 'OauthFailed'
-        var msg = '{{.message}}'
-        var btn = 'Close'
-        document.writeln('<script src="/api/oidc/msg?lang=' + lang + '&msg=' + msg + '&title=OauthFailed"><\/script>');
+        var isPt = lang.toLowerCase().startsWith('pt');
+        var title = isPt ? 'Falha no Oauth' : 'OauthFailed';
+        var msg = '{{.message}}';
+        var btn = isPt ? 'Fechar' : 'Close';
+        document.writeln('<script src="/api/oidc/msg?lang=' + lang + '&msg=' + msg + '&title=' + encodeURIComponent(title) + '"><\/script>');
     </script>
 </head>
 <body>
@@ -76,6 +77,7 @@
     document.title = title + ' - RustDesk API';
     document.getElementById('h1').innerText = title;
     document.getElementById('msg').innerText = msg;
+    document.getElementById('btn').innerText = btn;
 </script>
 </body>
 </html>
