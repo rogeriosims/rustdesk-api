@@ -82,7 +82,7 @@
 
 ### Web Admin:
 
-* 使用前后端分离，提供用户友好的管理界面，主要用来管理和展示。前端代码在[rustdesk-api-web](https://github.com/lejianwen/rustdesk-api-web)
+* 使用前后端分离，提供用户友好的管理界面，主要用来管理和展示。前端代码在[rustdesk-api-web](https://github.com/rogeriosims/rustdesk-api-web)
 
 * 后台访问地址是`http://<your server>[:port]/_admin/`
 * 初次安装管理员为用户名为`admin`，密码将在控制台打印，可以通过[命令行](#CLI)更改密码
@@ -244,11 +244,11 @@
     go install github.com/swaggo/swag/cmd/swag@latest
     ```
 
-3. 编译后台前端，前端代码在[rustdesk-api-web](https://github.com/lejianwen/rustdesk-api-web)中
+3. 编译后台前端，前端代码在[rustdesk-api-web](https://github.com/rogeriosims/rustdesk-api-web)中
    ```bash
    cd resources
    mkdir -p admin
-   git clone https://github.com/lejianwen/rustdesk-api-web
+   git clone https://github.com/rogeriosims/rustdesk-api-web
    cd rustdesk-api-web
    npm install
    npm run build
